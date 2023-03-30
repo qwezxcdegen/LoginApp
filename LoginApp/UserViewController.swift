@@ -9,11 +9,20 @@ import UIKit
 
 final class UserViewController: UIViewController {
     
+    // MARK: - Private IBOutlets
+    @IBOutlet weak private var welcomeLabel: UILabel!
+    
+    // MARK: - Public Properties
+    var username: String!
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBackground()
+        welcomeLabel.text = "Welcome, \(username ?? "")"
     }
     
+    // MARK: - Private Methods
     private func setupBackground() {
         let gradientLayer = CAGradientLayer()
         
