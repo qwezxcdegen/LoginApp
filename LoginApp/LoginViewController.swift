@@ -9,29 +9,37 @@ import UIKit
 
 final class LoginViewController: UIViewController {
 
+    // MARK: - Private IBOutlets
     @IBOutlet weak private var userNameTF: UITextField!
-    
     @IBOutlet weak private var passwordTF: UITextField!
     
+    // MARK: - Private Properties
     private let adminLogin = "Admin"
     private let adminPassword = "1234"
 
-    
+    // MARK: - Private IBActions
     @IBAction private func loginButtonPressed() {
         guard let login = userNameTF.text, let password = passwordTF.text
         else {
             return
         }
-        guard !login.isEmpty, !password.isEmpty else {
+        
+        guard !login.isEmpty, !password.isEmpty
+        else {
             showAlert(title: "Error", message: "Login or password is empty")
             return
         }
-        guard login == adminLogin, password == adminPassword else {
-            showAlert(title: "Error", message: "Login or password is wrong")
+        
+        guard login == adminLogin, password == adminPassword
+        else {
+            showAlert(
+                title: "Invalid login or password",
+                message: "Please, enter correct data"
+            )
             return
         }
-        
     }
+    
     @IBAction private func forgotUserNamePressed() {
         showAlert(title: "Oops!", message: "Your name is \(adminLogin)")
     }
@@ -40,6 +48,7 @@ final class LoginViewController: UIViewController {
         showAlert(title: "Oops!", message: "Your password is \(adminPassword)")
     }
     
+    // MARK: - Private Methods
     private func showAlert(title: String?, message: String?) {
         let alertController = UIAlertController(
             title: title,
