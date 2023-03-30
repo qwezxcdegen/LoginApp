@@ -17,7 +17,18 @@ final class LoginViewController: UIViewController {
     private let adminLogin = "Admin"
     private let adminPassword = "1234"
 
+    // MARK: - Override Methods
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let userVC = segue.destination as? UserViewController else { return }
+        userVC.username = adminLogin
+    }
+    
     // MARK: - Private IBActions
+    @IBAction private func unwind(for segue: UIStoryboardSegue) {
+        userNameTF.text = ""
+        passwordTF.text = ""
+    }
+    
     @IBAction private func loginButtonPressed() {
         guard let login = userNameTF.text, let password = passwordTF.text
         else {
@@ -63,6 +74,5 @@ final class LoginViewController: UIViewController {
         
         present(alertController, animated: true)
     }
-
 }
 
