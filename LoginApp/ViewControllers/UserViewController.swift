@@ -1,26 +1,21 @@
 //
-//  UserViewController.swift
+//  ViewController.swift
 //  LoginApp
 //
-//  Created by Степан Фоминцев on 31.03.2023.
+//  Created by Степан Фоминцев on 04.04.2023.
 //
 
 import UIKit
 
-final class UserViewController: UIViewController {
+class UserViewController: UIViewController {
+
+    var user: User!
     
-    // MARK: - Private IBOutlets
-    @IBOutlet weak private var welcomeLabel: UILabel!
-    
-    // MARK: - Public Properties
-    var username: String!
-    
-    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBackground()
-        welcomeLabel.text = "Welcome, \(username ?? "")"
     }
+
     
     // MARK: - Private Methods
     private func setupBackground() {

@@ -14,53 +14,50 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak private var passwordTF: UITextField!
     
     // MARK: - Private Properties
-    private let adminLogin = "Admin"
-    private let adminPassword = "1234"
+    private let user = User.getUser()
+    
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        userNameTF.text = user.username
+        passwordTF.text = user.password
+    }
 
     // MARK: - Override Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let userVC = segue.destination as? UserViewController else { return }
-        userVC.username = adminLogin
+        guard let tabbarVC = segue.destination as? UITabBarController else { return }
+        guard let viewControllers = tabbarVC.viewControllers else { return }
+        guard let homeVC = viewControllers[0] as? HomeViewController else { return }
+        guard let userNav = viewControllers[1] as? UINavigationController else { return }
+        guard let userVC = userNav.topViewController as? UserViewController else { return }
+        homeVC.user = user
+        userVC.user = user
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
     
-    // MARK: - Private IBActions
-    @IBAction private func unwind(for segue: UIStoryboardSegue) {
-        userNameTF.text = ""
-        passwordTF.text = ""
-    }
-    
     @IBAction private func loginButtonPressed() {
-        guard let login = userNameTF.text, let password = passwordTF.text
-        else {
+        guard let login = userNameTF.text, let password = passwordTF.text else {
             return
         }
-        
-        guard !login.isEmpty, !password.isEmpty
-        else {
-            showAlert(title: "Error", message: "Login or password is empty")
-            return
-        }
-        
-        guard login == adminLogin, password == adminPassword
-        else {
+        guard login == user.username, password == user.password else {
             showAlert(
                 title: "Invalid login or password",
                 message: "Please, enter correct data"
             )
             return
         }
+        performSegue(withIdentifier: "enteredSegue", sender: nil)
     }
     
     @IBAction private func forgotUserNamePressed() {
-        showAlert(title: "Oops!", message: "Your name is \(adminLogin)")
+        showAlert(title: "Oops!", message: "Your name is \(user.username)")
     }
     
     @IBAction private func forgotPasswordPressed() {
-        showAlert(title: "Oops!", message: "Your password is \(adminPassword)")
+        showAlert(title: "Oops!", message: "Your password is \(user.password)")
     }
     
     // MARK: - Private Methods
