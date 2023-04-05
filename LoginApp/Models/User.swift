@@ -19,9 +19,11 @@ struct User {
             person: Person(
                 image: "",
                 name: "Stepan",
+                surname: "Fomintsev",
                 age: 20,
                 status: "Student",
-                description: "Like to follow crypto"
+                brief: "Like to follow crypto",
+                description: "\"Some info about me\""
             )
         )
     }
@@ -30,8 +32,10 @@ struct User {
 struct Person {
     let image: String?
     let name: String
+    let surname: String
     let age: Int
     let status: String
+    let brief: String
     let description: String
     
     func getPhoto() -> UIImage? {
