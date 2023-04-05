@@ -23,7 +23,7 @@ struct User {
                 age: 20,
                 status: "Student",
                 brief: "Like to follow crypto",
-                description: "\"Some info about me\""
+                description: "Stepan was born in 2002. Currently studying at the university. He wants to become a senior ios dev in the next week"
             )
         )
     }
