@@ -254,10 +254,26 @@
                     <view key="view" contentMode="scaleToFill" id="Nf7-LS-Rbk">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6c-os-25c">
+                                <rect key="frame" x="16" y="175" width="361" height="27.333333333333343"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="X3a-S2-Wcc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="X3a-S2-Wcc" firstAttribute="trailing" secondItem="o6c-os-25c" secondAttribute="trailing" constant="16" id="1JN-VB-x6g"/>
+                            <constraint firstItem="o6c-os-25c" firstAttribute="leading" secondItem="X3a-S2-Wcc" secondAttribute="leading" constant="16" id="Hs1-72-GhQ"/>
+                            <constraint firstItem="o6c-os-25c" firstAttribute="top" secondItem="X3a-S2-Wcc" secondAttribute="top" constant="20" id="J0k-da-CQS"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uY9-V1-dkb"/>
+                    <connections>
+                        <outlet property="bioLabel" destination="o6c-os-25c" id="6fR-C8-RRY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14r-Yx-BC7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

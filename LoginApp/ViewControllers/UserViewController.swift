@@ -33,7 +33,11 @@ class UserViewController: UIViewController {
         briefLabel.text = person.brief
         
         navigationItem.title = "\(person.name) \(person.surname)"
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let bioVC = segue.destination as? BioViewController else { return }
+        bioVC.person = user.person
     }
 
     
